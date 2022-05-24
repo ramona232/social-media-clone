@@ -9,7 +9,7 @@ import Widgets from "../components/Widgets";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase";
 import { useState } from "react";
-import Admin from "../components/Admin";
+import SuperAdmin from "../components/SuperAdmin";
 
 export default function Admin({ providers }) {
 	const { data: session } = useSession();
@@ -25,7 +25,7 @@ export default function Admin({ providers }) {
 	if (!session) return <Login providers={providers} />;
 
 	if (session.user.tag !== "pnlsector1" && session.user.tag !== "ramonarotaru")
-		return <Admin />;
+		return <SuperAdmin />;
 
 	const sendArticol = async (e) => {
 		e.preventDefault();

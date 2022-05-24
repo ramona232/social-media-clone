@@ -11,7 +11,6 @@ import Input from "../components/Input";
 export default function Home({ providers }) {
 	const { data: session } = useSession();
 	if (!session) return <Login providers={providers} />;
-	console.log(session)
 	return (
 		<div>
 			<Head>

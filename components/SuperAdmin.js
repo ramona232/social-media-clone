@@ -2,7 +2,7 @@ import { ArrowLeftIcon } from "@heroicons/react/outline";
 import { useRouter } from "next/router";
 import React from "react";
 
-export default function Admin() {
+export default function SuperAdmin() {
   	const router = useRouter();
 	return (
 		<div className="w-screen h-screen flex flex-col items-center justify-center spacey-4">
