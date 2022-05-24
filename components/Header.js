@@ -2,12 +2,14 @@ import { SearchIcon } from "@heroicons/react/solid";
 import { useTheme } from "next-themes";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/router";
 const spring = {
 	type: "spring",
 	stiffness: 700,
 	damping: 30,
 };
 export default function Header() {
+		const router = useRouter();
 	const [mounted, setMounted] = useState(false);
 	const { setTheme, resolvedTheme, theme } = useTheme();
 
@@ -15,18 +17,17 @@ export default function Header() {
 	useEffect(() => setMounted(true), []);
 
 	return (
-		<div className="flex items-center justify-between sticky top-0 left-0 z-50 bgTheme h-[60px] px-2 md:px-4 w-full shadow-md ">
+		<div className="flex items-center justify-between sticky top-0 left-0 z-50 bgTheme h-[60px] px-2 md:px-4 w-full shadow-md">
 			{mounted && (
-				<>
+				<div className="hoverAnimation" onClick={() => router.push("/")}>
 					{resolvedTheme === "dark" ? (
 						<img src="/img/logo-white.png" className="w-[100px]" />
 					) : (
 						<img src="/img/logo-blue.png" className="w-[100px]" />
 					)}
-				</>
+				</div>
 			)}
 
-			
 			{/* <div className="flex items-center space-x-1 py-1 px-2 border-b border-gray-500 mx-6 xl:mx-20 w-full">
 				<SearchIcon className="text-gray-500 w-5 h-5" />
 				<input
@@ -35,7 +36,6 @@ export default function Header() {
 					className="bg-transparent text-sm placeholder:text-gray-500 focus:outline-none  w-full "
 				/>
 			</div> */}
-
 
 			{/* Dark mode toggle */}
 			{mounted && (
