@@ -1,17 +1,15 @@
+import { getProviders, getSession, useSession } from "next-auth/react";
 import Head from "next/head";
-import Feed from "../components/Feed";
+import React from "react";
 import Header from "../components/Header";
+import Login from "../components/Login";
+import MiniHeader from "../components/MiniHeader";
 import Sidebar from "../components/Sidebar";
 import Widgets from "../components/Widgets";
-import { getProviders, getSession, useSession } from "next-auth/react";
-import Login from "../components/Login";
-import Input from "../components/Input";
 
-
-export default function Home({ providers }) {
+export default function grupuri({ providers }) {
 	const { data: session } = useSession();
 	if (!session) return <Login providers={providers} />;
-	console.log(session)
 	return (
 		<div>
 			<Head>
@@ -23,9 +21,11 @@ export default function Home({ providers }) {
 
 			<main className=" flex fixed top-[60px] left-0 right-0 justify-between  mx-auto max-w-[1440px] h-screen">
 				<Sidebar />
-				<Feed />
+				<div className="h-full flex-grow  max-w-[700px] overflow-y-scroll scrollbar-thin">
+					<MiniHeader text="Grupuri" />
+				</div>
+
 				<Widgets />
-				<Input />
 			</main>
 		</div>
 	);
