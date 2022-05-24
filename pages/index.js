@@ -20,7 +20,7 @@ export default function Home({ providers }) {
 
 			<Header />
 
-			<main className=" flex fixed top-[60px] left-0 right-0 justify-between  mx-auto max-w-[1440px] h-screen">
+			<main className=" flex fixed top-[60px] left-0 right-0 justify-between  mx-auto max-w-[1440px] h-screen mb-28">
 				<Sidebar />
 				<Feed />
 				<Widgets />

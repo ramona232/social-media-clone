@@ -99,7 +99,7 @@ export default function Admin({ providers }) {
 					<h1 className="textTheme font-bold max-w-[500px] text-center lg:mx-auto my-8">
 						Creeaza un eveniment
 					</h1>
-					<form className="flex flex-col max-w-[500px] space-y-2 px-2 py-4 bgTheme mt-4 shadow-md mr-2 lg:mx-auto mb-24">
+					<form className="flex flex-col max-w-[500px] space-y-2 px-2 py-4 bgTheme mt-4 shadow-md mr-2 lg:mx-auto mb-28">
 						<input
 							value={titlu}
 							onChange={(e) => setTitlu(e.target.value)}
