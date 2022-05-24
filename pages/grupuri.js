@@ -19,9 +19,9 @@ export default function Grupuri({ providers }) {
 
 			<Header />
 
-			<main className=" flex fixed top-[60px] left-0 right-0 justify-between  mx-auto max-w-[1440px] h-screen mb-28">
+			<main className=" flex fixed top-[60px] left-0 right-0 justify-between  mx-auto max-w-[1440px] h-screen ">
 				<Sidebar />
-				<div className="h-full flex-grow  max-w-[700px] overflow-y-scroll scrollbar-thin">
+				<div className="h-full flex-grow  max-w-[700px] overflow-y-scroll scrollbar-thin mb-28">
 					<MiniHeader text="Grupuri" />
 				</div>
 

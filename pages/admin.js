@@ -69,7 +69,7 @@ export default function Admin({ providers }) {
 
 			<main className=" flex fixed top-[60px] left-0 right-0 justify-between  mx-auto max-w-[1440px] h-screen">
 				<Sidebar />
-				<div className="h-full flex-grow  max-w-[700px] overflow-y-scroll scrollbar-thin">
+				<div className="h-full flex-grow  max-w-[700px] overflow-y-scroll scrollbar-thin mb-28">
 					<MiniHeader text="Admin" />
 					<h1 className="textTheme font-bold max-w-[500px] text-center lg:mx-auto my-8">
 						Scrie un articol
