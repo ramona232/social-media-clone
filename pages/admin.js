@@ -22,11 +22,6 @@ export default function Admin({ providers }) {
 	const [descriere, setDescriere] = useState("");
 	const [eveniment, setEveniment] = useState("");
 
-	if (!session) return <Login providers={providers} />;
-
-	if (session.user.tag !== "pnlsector1" && session.user.tag !== "ramonarotaru")
-		return <SuperAdmin />;
-
 	const sendArticol = async (e) => {
 		e.preventDefault();
 		await addDoc(collection(db, "articole"), {
@@ -58,6 +53,11 @@ export default function Admin({ providers }) {
 		setEveniment("");
 	};
 
+	if (!session) return <Login providers={providers} />;
+
+	if (session.user.tag !== "pnlsector1" && session.user.tag !== "ramonarotaru")
+		return <SuperAdmin />;
+	
 	return (
 		<div>
 			<Head>

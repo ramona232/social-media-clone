@@ -14,16 +14,18 @@ import Eveniment from "../components/Eveniment";
 
 export default function Evenimente({ providers }) {
 	const { data: session } = useSession();
-		const [evenimente, setEvenimente] = useState([]);
+	const [evenimente, setEvenimente] = useState([]);
+
+	useEffect(
+		() =>
+			onSnapshot(
+				query(collection(db, "evenimente"), orderBy("timestamp", "desc")),
+				(snapshot) => setEvenimente(snapshot.docs)
+			),
+		[db]
+	);
+	
 	if (!session) return <Login providers={providers} />;
-		useEffect(
-			() =>
-				onSnapshot(
-					query(collection(db, "evenimente"), orderBy("timestamp", "desc")),
-					(snapshot) => setEvenimente(snapshot.docs)
-				),
-			[db]
-		);
 	return (
 		<div>
 			<Head>
@@ -39,7 +41,11 @@ export default function Evenimente({ providers }) {
 					<MiniHeader text="Evenimente" />
 					<div className="mb-24 mr-2 md:-ml-10 lg:mx-auto">
 						{evenimente.map((eveniment) => (
-							<Eveniment key={eveniment.id} id={eveniment.id} eveniment={eveniment.data()} />
+							<Eveniment
+								key={eveniment.id}
+								id={eveniment.id}
+								eveniment={eveniment.data()}
+							/>
 						))}
 					</div>
 				</div>

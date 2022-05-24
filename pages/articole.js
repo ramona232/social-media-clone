@@ -16,8 +16,6 @@ export default function Articole({ providers }) {
 	const { data: session } = useSession();
 	const [articole, setArticole] = useState([]);
 
-
-
 	useEffect(
 		() =>
 			onSnapshot(
@@ -26,7 +24,7 @@ export default function Articole({ providers }) {
 			),
 		[db]
 	);
-	
+
 	if (!session) return <Login providers={providers} />;
 
 	return (

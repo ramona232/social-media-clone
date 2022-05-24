@@ -14,7 +14,7 @@ export default function Qrcode({ providers }) {
 	const [input, setInput] = useState(null);
 	const [response, setResponse] = useState(null);
 	const { data: session } = useSession();
-	if (!session) return <Login providers={providers} />;
+
 
 	const getQrcode = async () => {
 		try {
@@ -36,7 +36,8 @@ export default function Qrcode({ providers }) {
 		document.body.appendChild(urlObject);
 		urlObject.click();
 	};
-
+	
+	if (!session) return <Login providers={providers} />;
 	return (
 		<div>
 			<Head>
