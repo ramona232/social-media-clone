@@ -12,7 +12,7 @@ import Sidebar from "../components/Sidebar";
 import Widgets from "../components/Widgets";
 import Articol from "../components/Articol";
 
-export default function articole({ providers }) {
+export default function Articole({ providers }) {
 	const { data: session } = useSession();
 	const [articole, setArticole] = useState([]);
 

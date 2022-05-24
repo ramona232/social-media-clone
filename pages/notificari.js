@@ -6,7 +6,7 @@ import MiniHeader from "../components/MiniHeader";
 import Sidebar from "../components/Sidebar";
 import Widgets from "../components/Widgets";
 
-export default function notificari({ providers }) {
+export default function Notificari({ providers }) {
 	const { data: session } = useSession();
 	if (!session) return <Login providers={providers} />;
 	return (

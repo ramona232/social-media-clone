@@ -11,7 +11,7 @@ import { db } from "../firebase";
 import { useState } from "react";
 import Admin from "../components/Admin";
 
-export default function admin({ providers }) {
+export default function Admin({ providers }) {
 	const { data: session } = useSession();
 	const [articol, setArticol] = useState("");
 	const [title, setTitle] = useState("");

@@ -10,7 +10,7 @@ import Widgets from "../components/Widgets";
 import axios from "axios";
 import SVG from "react-inlinesvg";
 
-export default function qrcode({ providers }) {
+export default function Qrcode({ providers }) {
 	const [input, setInput] = useState(null);
 	const [response, setResponse] = useState(null);
 	const { data: session } = useSession();

@@ -7,7 +7,7 @@ import MiniHeader from "../components/MiniHeader";
 import Sidebar from "../components/Sidebar";
 import Widgets from "../components/Widgets";
 
-export default function grupuri({ providers }) {
+export default function Grupuri({ providers }) {
 	const { data: session } = useSession();
 	if (!session) return <Login providers={providers} />;
 	return (

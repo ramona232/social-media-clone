@@ -12,7 +12,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Eveniment from "../components/Eveniment";
 
-export default function evenimente({ providers }) {
+export default function Evenimente({ providers }) {
 	const { data: session } = useSession();
 		const [evenimente, setEvenimente] = useState([]);
 	if (!session) return <Login providers={providers} />;
