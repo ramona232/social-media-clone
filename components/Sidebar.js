@@ -33,7 +33,7 @@ export default function Sidebar() {
 				</div>
 			</div>
 
-			<div className="mt-5 space-y-6 lg:space-y-4 flex flex-col md:pl-2">
+			<div className="mt-5 space-y-6 lg:space-y-6 flex flex-col md:pl-2">
 				<SidebarLink text="Acasa" Icon={HomeIcon} active /> 
 
 				{/* <div className="relative" onClick={() => router.push("/notificari")}>
