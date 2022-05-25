@@ -5,11 +5,11 @@
 
 @layer base {
 	body {
-		@apply bg-gradient-to-tr from-slate-400 via-slate-200 to-slate-100
+		@apply bg-[url(/img/bgwhite.jpg)] 
 		  dark:bg-[url(/img/bg.jpg)] bg-cover bg-no-repeat bg-center bg-fixed	 font-[Montserrat] overflow-y-scroll scrollbar-thin;
 	}
 	.bgTheme {
-		@apply bg-white dark:bg-[#12284C];
+		@apply backdrop-blur-sm bg-white/50 dark:bg-[#12284C]/70;
 	}
 	.textTheme {
 		@apply text-gray-900 dark:text-gray-100;
