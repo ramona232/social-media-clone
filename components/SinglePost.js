@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import {
@@ -20,7 +19,7 @@ import Comment from "./Comment";
 export default function SinglePost({ post, id }) {
 	const { data: session } = useSession();
 	const [comments, setComments] = useState([]);
-	const [comment, setComment] = useState('');
+	const [comment, setComment] = useState("");
 
 	useEffect(
 		() =>
@@ -35,14 +34,14 @@ export default function SinglePost({ post, id }) {
 	);
 
 	const sendComment = async (e) => {
-		e.preventDefault();	
+		e.preventDefault();
 		await addDoc(collection(db, "posts", id, "comments"), {
 			comment: comment,
 			username: session.user.name,
 			userImg: session.user.image,
 			timestamp: serverTimestamp(),
 		});
-		setComment('');
+		setComment("");
 	};
 
 	return (

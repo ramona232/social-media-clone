@@ -8,7 +8,7 @@ import { db } from "../firebase";
 export default function Eveniment({eveniment,id}) {
     	const { data: session } = useSession();
 					return (
-						<div className="max-w-[500px] md:mx-auto mt-2 mb-4 textTheme">
+						<div className="max-w-[500px] md:mx-auto m-4 textTheme">
 							<div className="flex items-center p-2 border-b border-gray-500">
 								<img src={eveniment?.userImg} className="h-9 w-9 rounded-full" />
 								<div className="flex-1 items-center p-2 ">
@@ -33,7 +33,7 @@ export default function Eveniment({eveniment,id}) {
 									</div>
 								)}
 							</div>
-							<div className="space-y-4 p-2 mt-2">
+							<div className="space-y-4 p-4 mt-2">
 								<h1 className=" font-bold">{eveniment?.titlu}</h1>
 								<p className="text-[15px] text-red-600 font-medium">
 									Data:{""} {eveniment?.date}
