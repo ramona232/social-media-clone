@@ -18,10 +18,10 @@ export default function Sidebar() {
 	const router = useRouter();
 	return (
 		<div className="sticky flex flex-col lg:w-[300px] items-start px-2 md:px-4 pt-4">
-			<div className="flex md:space-x-2 md:border-b border-gray-500 pb-2 ">
+			<div className="flex md:space-x-2 md:border-b border-gray-500 pb-2 mt-6">
 				<img
 					src={session.user.image}
-					className="hoverAnimation h-6 w-6 md:h-10 md:w-10 rounded-full "
+					className="hoverAnimation h-7 w-7 md:h-10 md:w-10 rounded-full "
 				/>
 				<div className="hidden md:flex flex-col">
 					<h1 className="textTheme font-bold text-[17px] hoverAnimation  ">

@@ -9,7 +9,7 @@ function SidebarLink({ Icon, text, active }) {
 			}`}
 			onClick={() => active && router.push("/")}
 		>
-			<Icon className="h-6" />
+			<Icon className="h-7" />
 			<span className="hidden md:flex text-[15px]">{text}</span>
 		</div>
 	);
