@@ -30,7 +30,7 @@ export default function Modal({ handleClose, type }) {
 			{type === "dropIn" && (
 				<motion.div
 					onClick={(e) => e.stopPropagation()}
-					className="rounded-sm flex flex-col justify-center bg-white dark:bg-[#12284C] textTheme w-full max-w-lg mx-4 -mt-24 z-50 lg:mt-4 xl:mt-10"
+					className="rounded-sm flex flex-col justify-center bg-white dark:bg-[#12284C] textTheme w-full max-w-lg mx-4 z-50 lg:mt-4 xl:mt-10 mb-20"
 					variants={dropIn}
 					initial="hidden"
 					animate="visible"

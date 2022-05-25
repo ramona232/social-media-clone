@@ -64,7 +64,7 @@ export default function Form() {
 	};
 
 	return (
-		<form className="flex flex-col relative space-y-2 text-black/80 dark:text-white/75 ">
+		<form className="flex flex-col relative space-y-2 text-black/80 dark:text-white/75 overflow-y-scroll scrollbar-thin">
 			<div className="divide-y divide-gray-700 w-full">
 				<div className={`${selectedFile && "pb-7"} ${input && "space-y-2.5"}`}>
 					<InputEmoji
@@ -85,7 +85,7 @@ export default function Form() {
 							<img
 								src={selectedFile}
 								alt=""
-								className="rounded-sm max-h-80 object-cover"
+								className="rounded-sm max-h-40 md:max-h-80 object-contain"
 							/>
 						</div>
 					)}
