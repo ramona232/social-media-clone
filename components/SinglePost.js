@@ -53,8 +53,8 @@ export default function SinglePost({ post, id }) {
 					<div className="">
 						<p className=" font-bold">{post?.username}</p>
 						<span className="hover:underline text-sm sm:text-[15px]">
-						<Moment fromNow>{post?.timestamp?.toDate()}</Moment>
-					</span>
+							<Moment fromNow>{post?.timestamp?.toDate()}</Moment>
+						</span>
 					</div>
 				</div>
 				{session.user.name === post?.username ? (
@@ -68,8 +68,7 @@ export default function SinglePost({ post, id }) {
 						<TrashIcon className="h-5 mr-2" />
 					</div>
 				) : (
-					<div>	
-					</div>
+					<div></div>
 				)}
 			</div>
 			<div className="border-b border-gray-500">
@@ -99,9 +98,11 @@ export default function SinglePost({ post, id }) {
 				<button
 					type="submit"
 					onClick={sendComment}
-					className="text-white bg-blue-500 py-1 px-2 rounded-full hoverAnimation"
+					disabled={!comment.trim()}
+					className="text-white bg-blue-500 py-1 px-2 rounded-full hoverAnimation
+					disabled:hover:bg-[#1d9bf0] disabled:opacity-50 disabled:cursor-default"
 				>
-					<PaperAirplaneIcon className="h-4 w-4 text-white"/>
+					<PaperAirplaneIcon className="h-4 w-4 text-white" />
 				</button>
 			</form>
 		</div>
