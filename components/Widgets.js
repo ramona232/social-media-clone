@@ -21,7 +21,7 @@ export default function Widgets() {
 				<NewspaperIcon className="h-5 w-5 textTheme mr-2"/> Articole noi
 			</h1>
 
-			<div className=" overflow-y-scroll scrollbar-thin mb-28 px-7 max-w-[300px]">
+			<div className=" overflow-y-scroll scrollbar-thin mb-28  max-w-[300px]">
 				{articole.map((articol) => (
 					<Articol key={articol.id} id={articol.id} articol={articol.data()} />
 				))}

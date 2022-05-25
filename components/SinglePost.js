@@ -76,7 +76,7 @@ export default function SinglePost({ post, id }) {
 				{/* text */}
 				<p className="p-4">{post?.text}</p>
 				{/* img */}
-				<img src={post?.image} className="max-h-80 object-cover w-full " />
+				<img src={post?.image} className="max-h-40 object-contain w-full " />
 			</div>
 
 			{/* comments */}

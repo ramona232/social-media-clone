@@ -106,11 +106,11 @@ export default function Form() {
 							hidden
 							onChange={addImageToPost}
 						/>
-						<p className="textTheme  text-[15px]">Imagine</p>
+						<p className="textTheme  ">Imagine</p>
 					</div>
 
 					<button
-						className="hoverAnimation font-medium text-[15px] bg-blue-400 hover:bg-blue-500 disabled:hover:bg-[#1d9bf0] disabled:opacity-50 disabled:cursor-default text-white rounded-full px-2 py-0.5"
+						className="hoverAnimation font-medium bg-blue-400 hover:bg-blue-500 disabled:hover:bg-[#1d9bf0] disabled:opacity-50 disabled:cursor-default text-white rounded-full px-2 py-0.5"
 						type="submit"
 						onClick={uploadPost}
 						disabled={!input.trim()}
