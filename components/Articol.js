@@ -33,7 +33,7 @@ export default function Articol({ articol,id }) {
 						</div>
 					)}
 				</div>
-				<div className="space-y-4 p-2 mt-2">
+				<div className="space-y-4 p-4 mt-2">
 					<h1 className=" font-bold">{articol?.title}</h1>
 					<p className='text-[15px]'>{articol?.text}</p>
 				</div>
