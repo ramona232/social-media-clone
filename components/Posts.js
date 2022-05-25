@@ -17,7 +17,7 @@ export default function Posts() {
 				[db]
 			);
 	return (
-		<div className="pt-2 pb-36 md:pt-4 pr-2 md:pr-4 max-w-[500px] lg:px-0 mx-auto">
+		<div className=" max-w-[500px]  mx-auto my-10">
 			{posts.map((post) => (
 				<SinglePost key={post.id} id={post.id} post={post.data()} />
 			))}

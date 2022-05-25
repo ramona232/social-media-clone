@@ -1,4 +1,4 @@
-import { SearchIcon } from "@heroicons/react/solid";
+// import { SearchIcon } from "@heroicons/react/solid";
 import { useTheme } from "next-themes";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";

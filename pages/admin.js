@@ -69,7 +69,7 @@ export default function Admin({ providers }) {
 
 			<main className=" flex fixed top-[60px] left-0 right-0 justify-between  mx-auto max-w-[1440px] h-screen">
 				<Sidebar />
-				<div className="h-full flex-grow  max-w-[700px] overflow-y-scroll scrollbar-thin mb-28">
+				<div className="flex-grow  max-w-[700px] overflow-y-scroll scrollbar-thin pb-28">
 					<MiniHeader text="Admin" />
 					<h1 className="textTheme font-bold max-w-[500px] text-center lg:mx-auto my-8">
 						Scrie un articol
@@ -112,7 +112,7 @@ export default function Admin({ providers }) {
 							onChange={(e) => setDate(e.target.value)}
 							type="date"
 							placeholder="Data eveniment ..."
-							className="p-2 outline-none bg-transparent textTheme border-b border-gray-500"
+							className="p-2 outline-none bg-transparent textTheme border-b border-gray-500 w-full"
 						/>
 						<input
 							value={locatia}

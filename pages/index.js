@@ -5,11 +5,15 @@ import Sidebar from "../components/Sidebar";
 import Widgets from "../components/Widgets";
 import { getProviders, getSession, useSession } from "next-auth/react";
 import Login from "../components/Login";
-import Input from "../components/Input";
-
+import Modal from "../components/Modal";
+import { useRecoilState } from "recoil";
+import { modalState, modalTypeState } from "../atoms/modalAtom";
+import { AnimatePresence } from "framer-motion";
 
 export default function Home({ providers }) {
 	const { data: session } = useSession();
+	const [modalOpen, setModalOpen] = useRecoilState(modalState);
+	const [modalType, setModalType] = useRecoilState(modalTypeState);
 	if (!session) return <Login providers={providers} />;
 	return (
 		<div>
@@ -20,11 +24,15 @@ export default function Home({ providers }) {
 
 			<Header />
 
-			<main className=" flex fixed top-[60px] left-0 right-0 justify-between  mx-auto max-w-[1440px] h-screen mb-28">
+			<main className=" flex fixed top-[60px] left-0 right-0 justify-between  mx-auto max-w-[1440px] h-screen">
 				<Sidebar />
 				<Feed />
 				<Widgets />
-				<Input />
+				<AnimatePresence>
+					{modalOpen && (
+						<Modal handleClose={() => setModalOpen(false)} type={modalType} />
+					)}
+				</AnimatePresence>
 			</main>
 		</div>
 	);

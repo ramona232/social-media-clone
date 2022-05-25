@@ -4,7 +4,7 @@ function SidebarLink({ Icon, text, active }) {
 	const router = useRouter();
 	return (
 		<div
-			className={`textTheme flex text-lg  space-x-3 hoverAnimation justify-start hoverAnimation ${
+			className={`textTheme flex text-lg  space-x-1 hoverAnimation justify-start hoverAnimation ${
 				active && "font-bold"
 			}`}
 			onClick={() => active && router.push("/")}

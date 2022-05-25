@@ -21,6 +21,7 @@
     "react-inlinesvg": "^3.0.0",
     "react-input-emoji": "^4.1.0",
     "react-moment": "^1.1.2",
+    "recoil": "^0.7.3-alpha.2",
     "tailwindcss-scrollbar": "^0.1.0"
   },
   "devDependencies": {

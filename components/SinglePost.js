@@ -13,9 +13,9 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase";
 import InputEmoji from "react-input-emoji";
-import { DotsHorizontalIcon, PaperAirplaneIcon, TrashIcon } from "@heroicons/react/outline";
-import Comment from "./Comment";
+import { PaperAirplaneIcon, TrashIcon } from "@heroicons/react/outline";
 import Moment from "react-moment";
+import Comment from "./Comment";
 
 export default function SinglePost({ post, id }) {
 	const { data: session } = useSession();
@@ -35,51 +35,61 @@ export default function SinglePost({ post, id }) {
 	);
 
 	const sendComment = async (e) => {
-		e.preventDefault();
+		e.preventDefault();	
 		await addDoc(collection(db, "posts", id, "comments"), {
 			comment: comment,
 			username: session.user.name,
 			userImg: session.user.image,
 			timestamp: serverTimestamp(),
 		});
-		setComment('')
+		setComment('');
 	};
 
 	return (
-		<div className="bgTheme textTheme shadow-md rounded-sm mt-2 mb-8 ">
-			<div className="flex items-center p-2 ">
-				<img src={post?.userImg} className="h-9 w-9 rounded-full" />
+		<div className="bgTheme textTheme my-7 shadow-md rounded-sm ">
+			<div className="flex items-center p-2 border-b border-gray-500">
+				<img src={post?.userImg} className="h-10 w-10 rounded-full" />
 				<div className="flex-1 items-center p-2 ">
-						<p className="text-[15px] font-bold">{post?.username}</p>
-						<p className="text-blue-500 text-[13px]">@{post?.tag}</p>
-						<span className="hover:underline text-[13px]">
+					<div className="">
+						<p className=" font-bold">{post?.username}</p>
+						<span className="hover:underline text-sm sm:text-[15px]">
 						<Moment fromNow>{post?.timestamp?.toDate()}</Moment>
 					</span>
+					</div>
 				</div>
 				{session.user.name === post?.username ? (
 					<div
-						className="cursor-pointer text-[#6e767d] hover:text-red-600 transition duration-200 ease-out"
+						className="cursor-pointer hover:text-red-600 transition duration-200 ease-out"
 						onClick={(e) => {
 							e.stopPropagation();
 							deleteDoc(doc(db, "posts", id));
 						}}
 					>
-						<TrashIcon className="h-4 " />
+						<TrashIcon className="h-5 mr-2" />
 					</div>
 				) : (
-					<div className="text-[#6e767d]">
-						<DotsHorizontalIcon className="h-4" />
+					<div>	
 					</div>
 				)}
 			</div>
-			<div className="">
+			<div className="border-b border-gray-500">
 				{/* text */}
-				<p className="px-3 pb-4 text-[15px] font-medium">{post?.text}</p>
+				<p className="p-4">{post?.text}</p>
 				{/* img */}
-				<img src={post?.image} className="max-h-40 object-contain w-full" />
+				<img src={post?.image} className="max-h-80 object-cover w-full " />
 			</div>
+
+			{/* comments */}
+			{comments.length > 0 && (
+				<div>
+					{comments.map((comment) => (
+						<Comment key={comment.id} id={comment.id} comment={comment.data()} />
+					))}
+				</div>
+			)}
+
 			{/* imputBox */}
-			<form className="flex items-center py-4 pr-2 border-y border-gray-500 drop-shadow-md ">
+			<form className="flex items-center py-4 pr-4 bgTheme">
 				<InputEmoji
 					value={comment}
 					onChange={setComment}
@@ -89,22 +99,11 @@ export default function SinglePost({ post, id }) {
 				<button
 					type="submit"
 					onClick={sendComment}
-					className="bg-[#1d9bf0] text-white rounded-full py-1 px-2 text-sm font-medium shadow-md rotate-180 hover:bg-[#1268a1] disabled:hover:bg-[#1d9bf0] disabled:opacity-50 disabled:cursor-default"
-					disabled={!comment.trim()}
+					className="text-white bg-blue-500 py-1 px-2 rounded-full hoverAnimation"
 				>
-					<PaperAirplaneIcon className="h-5 w-5" />
+					<PaperAirplaneIcon className="h-4 w-4 text-white"/>
 				</button>
 			</form>
-			{/* comments */}
-			{comments.length > 0 && (
-				<div className="h-[120px] overflow-y-scroll scrollbar-thin">
-					{comments.map((comment) => (
-						<Comment key={comment.id} id={comment.id} comment={comment.data()} />
-					))}
-				</div>
-			)}
-
-
 		</div>
 	);
 }
