@@ -22,8 +22,7 @@ export default function Form() {
 	const filePickerRef = useRef(null);
 	const [modalOpen, setModalOpen] = useRecoilState(modalState);
 
-	const uploadPost = async (e) => {
-		e.preventDefault();
+	const uploadPost = async () => {
 		if (loading) return;
 		setLoading(true);
 
@@ -64,7 +63,14 @@ export default function Form() {
 	};
 
 	return (
-		<form className="flex flex-col relative space-y-2 text-black/80 dark:text-white/75 overflow-y-scroll scrollbar-thin">
+		<form
+			className="flex flex-col relative space-y-2 text-black/80 dark:text-white/75 overflow-y-scroll scrollbar-thin"
+			onKeyDown={(e) => {
+				if (e.code === "Enter" || e.which === 13) {
+					uploadPost();
+				}
+			}}
+		>
 			<div className="divide-y divide-gray-700 w-full">
 				<div>
 					<InputEmoji

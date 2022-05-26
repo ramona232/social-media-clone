@@ -28,8 +28,7 @@ export default function Eveniment({eveniment,id}) {
 										<TrashIcon className="h-4 " />
 									</div>
 								) : (
-									<div className="text-[#6e767d]">
-										<DotsHorizontalIcon className="h-4" />
+									<div>			
 									</div>
 								)}
 							</div>

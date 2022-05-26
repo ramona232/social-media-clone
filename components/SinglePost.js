@@ -20,6 +20,7 @@ export default function SinglePost({ post, id }) {
 	const { data: session } = useSession();
 	const [comments, setComments] = useState([]);
 	const [comment, setComment] = useState("");
+	const [loading, setLoading] = useState(false);
 
 	useEffect(
 		() =>
@@ -33,8 +34,10 @@ export default function SinglePost({ post, id }) {
 		[db]
 	);
 
-	const sendComment = async (e) => {
-		e.preventDefault();
+	const sendComment = async () => {
+		if (loading) return;
+		setLoading(true);
+
 		await addDoc(collection(db, "posts", id, "comments"), {
 			comment: comment,
 			username: session.user.name,
@@ -42,6 +45,7 @@ export default function SinglePost({ post, id }) {
 			timestamp: serverTimestamp(),
 		});
 		setComment("");
+		setLoading(false);
 	};
 
 	return (
@@ -70,24 +74,22 @@ export default function SinglePost({ post, id }) {
 					<div></div>
 				)}
 			</div>
-			<div className="border-b border-gray-500">
+			<div className="">
 				{/* text */}
 				<p className="p-4">{post?.text}</p>
 				{/* img */}
 				<img src={post?.image} className="max-h-40 object-contain w-full " />
 			</div>
 
-			{/* comments */}
-			{comments.length > 0 && (
-				<div>
-					{comments.map((comment) => (
-						<Comment key={comment.id} id={comment.id} comment={comment.data()} />
-					))}
-				</div>
-			)}
-
 			{/* imputBox */}
-			<form className="flex items-center py-4 pr-4 bgTheme">
+			<form
+				className="flex items-center py-4 pr-4 bgTheme border-y border-gray-500"
+				onKeyDown={(e) => {
+					if (e.code === "Enter" || e.which === 13) {
+						sendComment();
+					}
+				}}
+			>
 				<InputEmoji
 					value={comment}
 					onChange={setComment}
@@ -99,11 +101,19 @@ export default function SinglePost({ post, id }) {
 					onClick={sendComment}
 					disabled={!comment.trim()}
 					className="text-white bg-blue-500 py-1 px-2 rounded-full hoverAnimation
-					disabled:hover:bg-[#1d9bf0] disabled:opacity-50 disabled:cursor-default"
+					disabled:hover:bg-[#1d9bf0] disabled:opacity-50 disabled:cursor-default rotate-180"
 				>
 					<PaperAirplaneIcon className="h-4 w-4 text-white" />
 				</button>
 			</form>
+			{/* comments */}
+			{comments.length > 0 && (
+				<div>
+					{comments.map((comment) => (
+						<Comment key={comment.id} id={comment.id} comment={comment.data()} />
+					))}
+				</div>
+			)}
 		</div>
 	);
 }
