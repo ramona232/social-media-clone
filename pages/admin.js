@@ -55,7 +55,10 @@ export default function Admin({ providers }) {
 
 	if (!session) return <Login providers={providers} />;
 
-	if (session.user.tag !== "pnlsector1" && session.user.tag !== "ramonarotaru")
+	if (
+		session.user.email !== "pnlsector1@gmail.com" &&
+		session.user.tag !== "ramonarotaru"
+	)
 		return <SuperAdmin />;
 	
 	return (
